@@ -1,0 +1,7 @@
+return {
+	NPC_TAG = "EngineNPC",
+	NPC_CHARACTER_ATTRIBUTE = "Character",
+	ENGINE_LOG_PREFIX = "[ENGINE]",
+	MESSAGE_SHOW_TIME = 15,
+	UPDATE_INTERVAL = 0.5,
+}
