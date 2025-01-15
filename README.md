@@ -1,6 +1,6 @@
 <div align="center">
 
-# sdk-client-luau
+# 🎮 sdk-client-luau
 
 _A client for the Stealth SDK, for Roblox!_
 
