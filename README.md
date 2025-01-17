@@ -13,8 +13,6 @@ _A client for the Stealth SDK, for Roblox!_
 
 This SDK comes with a built-in demo place to test the backend. It consists of a baseplate and a test NPC. Players can interact with this NPC to test the chatbot. It is non-persistent and allows group interactions.
 
-This SDK comes bundled with a default character config, which implements default behaviour for the chatbot. These values can all be overridden in the character config, implementing custom behaviour when a player leaves the model's radius, enters the model's radius, sends a message, or more. This character config can be viewed [here](./src/server/defaultCharacterConfig.luau).
-
 ### Demo Place setup
 
 1. Clone the repository:
