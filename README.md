@@ -15,26 +15,34 @@ This SDK comes with a built-in demo place to test the backend. It consists of a 
 
 This SDK comes bundled with a default character config, which implements default behaviour for the chatbot. These values can all be overridden in the character config, implementing custom behaviour when a player leaves the model's radius, enters the model's radius, sends a message, or more. This character config can be viewed [here](./src/server/defaultCharacterConfig.luau).
 
-### Development
+### Demo Place setup
 
-1. Download packages:
+1. Clone the repository:
+
+```bash
+git clone https://github.com/stealth-studios/sdk-client-luau.git
+```
+
+2. Download packages:
 
 ```bash
 lune run install-packages
 ```
 
-2. Create a `env.luau` file with the following variables:
+3. Create a `env.luau` file with the following variables:
 
 ```env
 API_URL=
 API_KEY=
 ```
 
-3. Run the development script:
+4. Run the development script:
 
 ```bash
 lune run dev
 ```
+
+5. Sync your changes into Roblox via Rojo
 
 ## 📖 Documentation
 
