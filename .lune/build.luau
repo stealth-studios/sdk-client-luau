@@ -37,15 +37,15 @@ end
 
 local hasDarkLua = fs.isFile(".darklua.json")
 
-recursiveCopy("src", "temp")
+recursiveCopy("src", "temp/src")
 
 execCommandWrapper("rojo", { "sourcemap", "sourcemap.project.json", "-o", "sourcemap.json" })
 
 if hasDarkLua then
-	execCommandWrapper("darklua", { "process", "temp", "temp" })
+	execCommandWrapper("darklua", { "process", "temp/src", "temp/src" })
 end
 
-recursiveCopy("temp", "dist")
+recursiveCopy("temp/src", "dist")
 
 -- get rid of stories; no need for those to be in the actual build
 if fs.isDir("dist/ui/stories") then
