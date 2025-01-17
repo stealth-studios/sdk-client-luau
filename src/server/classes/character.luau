@@ -236,7 +236,7 @@ function character.createConversation(
 	return conversationObject
 end
 
-function character.finishConversation(self: Character, target: conversation.Conversation, yieldCallback: boolean?)
+function character.finishConversation(self: Character, target: conversation.Conversation)
 	local containingModel
 
 	for _, model: characterModel.CharacterModel in self.models do
@@ -248,25 +248,13 @@ function character.finishConversation(self: Character, target: conversation.Conv
 		end
 	end
 
-	if yieldCallback then
-		task.spawn(function()
-			if self.events.onConversationFinish then
-				self.events.onConversationFinish(self, target)
-			end
-
-			containingModel:cancelChats(target)
-
-			target:finish()
-		end)
-	else
-		if self.events.onConversationFinish then
-			self.events.onConversationFinish(self, target)
-		end
-
-		containingModel:cancelChats(target)
-
-		target:finish()
+	if self.events.onConversationFinish then
+		self.events.onConversationFinish(self, target)
 	end
+
+	containingModel:cancelChats(target)
+
+	target:finish()
 end
 
 type Events = {
