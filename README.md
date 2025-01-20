@@ -9,38 +9,9 @@ _A client for the Stealth SDK, for Roblox!_
 
 </div>
 
-## 🛠️ Development
+## 🌟 Example
 
-This SDK comes with a built-in demo place to test the backend. It consists of a baseplate and a test NPC. Players can interact with this NPC to test the chatbot. It is non-persistent and allows group interactions.
-
-### Demo Place setup
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/stealth-studios/sdk-client-luau.git
-```
-
-2. Download packages:
-
-```bash
-lune run install-packages
-```
-
-3. Create a `env.luau` file with the following variables:
-
-```env
-API_URL=
-API_KEY=
-```
-
-4. Run the development script:
-
-```bash
-lune run dev
-```
-
-5. Sync your changes into Roblox via Rojo
+You may view the example [here](https://github.com/stealth-studios/sdk-client-luau/tree/main/example)!
 
 ## 📖 Documentation
 

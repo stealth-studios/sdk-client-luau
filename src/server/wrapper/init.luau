@@ -68,7 +68,7 @@ function wrapper.send(
 	player: Player
 ): SendResponse?
 	local response: Response<SendResponse> = sendRequest(`{wrapperData.url}/api/send`, "POST", {
-		secret = conversation.secret,
+		secret = tostring(conversation.secret),
 		context = context and formatDictionary(context) or {},
 		message = message,
 		playerId = tostring(player.UserId),
@@ -147,7 +147,6 @@ type SendResponse = {
 
 export type Function = {
 	description: string?,
-	similes: { string }?,
 	parameters: {
 		{
 			name: string,
@@ -155,6 +154,7 @@ export type Function = {
 			type: "string" | "number" | "boolean",
 		}
 	},
+	[string]: any,
 }
 
 export type WrapperData = {

@@ -10,11 +10,6 @@ return engine.createCharacter({
 			functions = {
 				{
 					name = "color",
-					similes = {
-						"changeColor",
-						"setBaseplateColor",
-						"setColor",
-					},
 					description = "Changes the color of the baseplate",
 					parameters = {
 						r = {
@@ -111,16 +106,6 @@ return engine.createCharacter({
 						content = "The king of this world is the Rockingtons' father.",
 					},
 				},
-			},
-			topics = {
-				"StealthSDK RPG",
-			},
-			adjectives = {
-				"polite",
-				"concise",
-			},
-			style = {
-				"speaks in a polite and helpful manner",
 			},
 		},
 	},
