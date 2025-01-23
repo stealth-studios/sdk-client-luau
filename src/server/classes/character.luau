@@ -215,16 +215,25 @@ function character.createConversation(
 	local characterData = table.clone(self.config.character)
 	characterData.name = self.config.name
 
+	local partakingPlayers = player and { player } or {}
+
+	-- get all players in the model
+	for _, modelPlayer in model.playersInRadius do
+		if not table.find(partakingPlayers, modelPlayer) then
+			table.insert(partakingPlayers, modelPlayer)
+		end
+	end
+
 	local createdConversation = wrapper.create({
 		character = characterData,
 		functions = self.functions :: any, -- this is just pure laziness - i'll revisit this sometime
-	}, player and { player } or {}, persistenceToken)
+	}, partakingPlayers, persistenceToken)
 	if not createdConversation then
 		return nil
 	end
 
 	local conversationObject = conversation.new(createdConversation.id, createdConversation.secret)
-	conversationObject.partakingPlayers = { player }
+	conversationObject.partakingPlayers = partakingPlayers
 	table.insert(model.conversations, conversationObject)
 
 	if self.events.onConversationStart then

@@ -39,6 +39,10 @@ function conversation.finish(self: Conversation)
 end
 
 function conversation.addPlayer(self: Conversation, player: Player)
+	if table.find(self.partakingPlayers, player) then
+		return
+	end
+
 	table.insert(self.partakingPlayers, player)
 	wrapper.update({
 		id = self.id,

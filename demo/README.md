@@ -8,10 +8,11 @@ This SDK comes with a built-in demo place to test the backend. It consists of a 
 
 ### Setup
 
-1. Clone the repository:
+1. Clone the repository and navigate to the directory:
 
 ```bash
 git clone https://github.com/stealth-studios/sdk-client-luau.git
+cd sdk-client-luau
 ```
 
 2. Download packages:
