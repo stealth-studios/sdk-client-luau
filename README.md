@@ -15,7 +15,7 @@ You may view the example [here](https://github.com/stealth-studios/sdk-client-lu
 
 ## 📖 Documentation
 
-You may view the documentation for this library [here](https://google.com/docs/client/luau)!
+You may view the documentation for this library [here](https://docs.stealthsdk.com/clients/roblox)!
 
 ## 🤝 Contributing
 
