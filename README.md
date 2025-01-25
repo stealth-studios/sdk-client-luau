@@ -5,7 +5,7 @@
 _A client for the Stealth SDK, for Roblox!_
 
 [![CI Status](https://github.com/stealth-studios/sdk-client-luau/actions/workflows/ci-luau.yaml/badge.svg)](https://github.com/stealth-studios/sdk-client-luau/actions/workflows/ci-luau.yaml)
-[![License](https://img.shields.io/github/license/stealth-studios/sdk-client-luau)](https://github.com/stealth-studios/sdk-client-luau/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/stealth-studios/sdk-client-luau?)](https://github.com/stealth-studios/sdk-client-luau/blob/main/LICENSE)
 
 </div>
 
