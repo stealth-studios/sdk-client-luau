@@ -1,3 +1,7 @@
+# 1.1.1
+
+- Fix issue with Wally including demo files
+
 # 1.1.0
 
 - Added support for backend version 1.1.0
