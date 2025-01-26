@@ -18,7 +18,6 @@ function character.new(config: Config)
 		config = config.characterConfig,
 		_fullConfig = config,
 		events = config.events,
-		functions = config.functions,
 		models = {},
 	}
 
@@ -109,7 +108,7 @@ function character.executeFunctions(
 	}
 }
 	local results = {}
-	local functionLocation = self.functions or self.config.character.functions
+	local functionLocation = self.config.character.functions
 
 	if not functionLocation then
 		warn(
@@ -202,6 +201,17 @@ function character.getConversationForPlayer(
 	return nil
 end
 
+function character.updateSelf(self: Character, newCharacter: any & { name: string })
+	for _, model: characterModel.CharacterModel in self.models do
+		for _, convo in model.conversations do
+			convo:setCharacter(newCharacter)
+		end
+	end
+
+	self.config.name = newCharacter.name
+	self.config.character = newCharacter
+end
+
 function character.createConversation(
 	self: Character,
 	model: characterModel.CharacterModel,
@@ -226,7 +236,6 @@ function character.createConversation(
 
 	local createdConversation = wrapper.create({
 		character = characterData,
-		functions = self.functions :: any, -- this is just pure laziness - i'll revisit this sometime
 	}, partakingPlayers, persistenceToken)
 	if not createdConversation then
 		return nil
@@ -295,14 +304,16 @@ type CharacterConfig = {
 	name: string?,
 	individualInteractions: boolean?,
 	persistent: boolean?,
-	character: any, -- this type differs per framework
+	character: {
+		functions: { Function },
+		[string]: any,
+	}, -- this type differs per framework
 }
 
 export type Config = {
 	characterConfig: CharacterConfig,
 	modelConfig: characterModel.ModelConfig?,
 	events: Events?,
-	functions: { Function }?,
 }
 
 export type Character = typeof(setmetatable(

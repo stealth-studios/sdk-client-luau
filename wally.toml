@@ -1,6 +1,6 @@
 [package]
-name = "stealth-studios/sdk-client-luau"
-version = "1.0.0"
+name = "stealth-studios/stealth-sdk"
+version = "1.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 

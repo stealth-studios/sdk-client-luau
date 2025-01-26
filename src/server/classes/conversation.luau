@@ -63,6 +63,13 @@ function conversation.removePlayer(self: Conversation, player: Player)
 	}, self.partakingPlayers)
 end
 
+function conversation.setCharacter(self: Conversation, character: any & { name: string })
+	wrapper.update({
+		id = self.id,
+		secret = self.secret,
+	}, self.partakingPlayers, character)
+end
+
 function conversation.getPlayers(self: Conversation): { Player }
 	return self.partakingPlayers
 end

@@ -86,10 +86,15 @@ function wrapper.send(
 	return response.body
 end
 
-function wrapper.update(conversation: ConversationData, users: { Player }?): boolean
+function wrapper.update(
+	conversation: ConversationData,
+	users: { Player }?,
+	character: (any & { name: string })?
+): boolean
 	local response: Response<nil> = sendRequest(`{wrapperData.url}/api/update`, "POST", {
 		secret = conversation.secret,
-		users = users and formatUsers(users) or {},
+		users = users and formatUsers(users) or nil,
+		character = character,
 	}, {
 		Authorization = wrapperData.auth,
 	})
