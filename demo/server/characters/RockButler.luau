@@ -146,33 +146,44 @@ return engine.createCharacter({
 	},
 	events = {
 		onChatted = function(self, player, message)
+			-- This will get the conversation for the given player, by checking all characters and models.
 			local conversation = self:getConversationForPlayer(player)
 			local model = self:getInteractingModel(player)
 			if not conversation or not model then
 				return
 			end
 
+			-- This creates the first chat bubble.
 			local chatId = model:createChat(conversation)
+			-- Send a request to the AI, letting it know the player has 1000 gold.
 			local reply = conversation:send(player, message, {
 				gold = 1000,
 			})
 
+			-- If the AI doesn't respond, cancel the chat.
 			if not reply then
 				model:cancelChat(chatId)
 				return
 			end
 
+			-- If the AI has called a function, we need to execute it.
 			if reply.calls and #reply.calls > 0 then
+				-- Does the message have content?
 				if reply.content ~= "" and reply.content ~= nil then
+					-- Set the chat content to the message.
 					model:setChatContent(chatId, player, reply.content)
+					-- Clean the chat, so the server forgets about it, as it is no longer needed.
 					model:cleanChat(chatId)
 
+					-- Create a new chat bubble.
 					chatId = model:createChat(conversation)
 				end
 
+				-- Execute the functions.
 				local actionResponses = self:executeFunctions(player, reply.calls)
 				local feedbackProvided = false
 
+				-- Determine if we should let the player know the result of the functions.
 				for _, actionResponse in actionResponses do
 					if not actionResponse.success then
 						feedbackProvided = true
@@ -181,21 +192,22 @@ return engine.createCharacter({
 					end
 				end
 
+				-- If no feedback was provided, provide some generic feedback.
 				if not feedbackProvided then
 					model:provideActionFeedback(chatId, {
 						success = true,
 						message = "Action ran!",
 					})
 				end
-
-				return
 			end
 
+			-- If the AI cancelled the chat, cancel the chat, showing a "Chat cancelled" message.
 			if reply.cancelled then
 				model:cancelChat(chatId)
 				return
 			end
 
+			-- If the AI flagged the chat, flag the chat, showing a "Chat flagged" message.
 			if reply.flagged then
 				model:flagChat(chatId)
 				return
@@ -203,6 +215,7 @@ return engine.createCharacter({
 
 			local partakingPlayers = conversation:getPlayers()
 
+			-- Filter the content for each player.
 			for _, partakingPlayer: Player in partakingPlayers do
 				local filteredResult = TextService:FilterStringAsync(reply.content, partakingPlayer.UserId)
 
@@ -212,14 +225,18 @@ return engine.createCharacter({
 
 				local filteredContent = filteredResult:GetChatForUserAsync(partakingPlayer.UserId)
 
+				-- If the filtered content is different from the original content, flag the chat.
+				-- Players should not receive text with tags.
 				if filteredContent ~= reply.content then
 					model:flagChat(chatId)
 					return
 				end
 
+				-- Set the chat content to the filtered content.
 				model:setChatContent(chatId, partakingPlayer, filteredContent)
 			end
 
+			-- Clean the chat, so the server forgets about it, as it is no longer needed.
 			model:cleanChat(chatId)
 		end,
 	},

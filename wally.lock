@@ -13,6 +13,6 @@ version = "1.0.1"
 dependencies = []
 
 [[package]]
-name = "stealth-studios/sdk-client-luau"
-version = "1.0.0"
+name = "stealth-studios/stealth-sdk"
+version = "1.1.2"
 dependencies = [["fusion", "elttob/fusion@0.3.0"], ["ratelimit", "red-blox/ratelimit@1.0.1"]]
