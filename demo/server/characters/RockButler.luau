@@ -27,15 +27,18 @@ return engine.createCharacter({
 						},
 					},
 					parameters = {
-						r = {
+						{
+							name = "r",
 							description = "The R component of the color to change to",
 							type = "number",
 						},
-						g = {
+						{
+							name = "g",
 							description = "The G component of the color to change to",
 							type = "number",
 						},
-						b = {
+						{
+							name = "b",
 							description = "The B component of the color to change to",
 							type = "number",
 						},
