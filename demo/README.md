@@ -4,7 +4,7 @@
 
 </div>
 
-This SDK comes with a built-in demo place to test the backend. It consists of a baseplate and a test NPC. Players can interact with this NPC to test the chatbot. It is non-persistent and allows group interactions. It is built for the Basic Framework.
+This SDK comes with a built-in demo place to test the backend, assuming it is running the basic framework. It consists of a baseplate and a test NPC. Players can interact with this NPC to test the chatbot.
 
 ### Setup
 
