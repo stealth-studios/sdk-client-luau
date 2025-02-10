@@ -11,7 +11,7 @@ _A client for the Stealth SDK, for Roblox!_
 
 ## 🌟 Example
 
-You may view the example [here](https://github.com/stealth-studios/sdk-client-luau/tree/main/example)!
+You may view the example [here](https://github.com/stealth-studios/sdk-client-luau/tree/main/demo)!
 
 ## 📖 Documentation
 
